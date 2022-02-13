@@ -23,6 +23,7 @@ const Header = () => {
       <Image
         className="object-contain"
         src="https://links.papareact.com/ua6"
+        alt="HULU"
         width={200}
         height={100}
       />
