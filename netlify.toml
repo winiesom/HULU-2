@@ -1,2 +1,10 @@
-command = "yarn run build && yarn run export"
-publish = "out"
+
+[build]
+  command   = "npm run build"
+  functions = "out_functions"
+  publish   = "out_publish"
+
+[dev]
+  functions = "out_functions"
+  publish   = "out_publish"
+  framework = "#static"
