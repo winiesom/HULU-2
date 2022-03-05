@@ -25,9 +25,26 @@ export default function Home({ results }) {
   );
 }
 
-// export async function getServerSideProps(context) {
+export async function getServerSideProps(context) {
+  console.log(context, "hahahahah");
+  const genre = context.query.genre;
+  console.log(genre, "genreeee");
+
+  const request = await fetch(
+    `https://api.themoviedb.org/3${
+      requests[genre]?.url || requests.fetchTrending.url
+    }`
+  ).then((res) => res.json());
+
+  return {
+    props: {
+      results: request.results,
+    },
+  };
+}
+
+// export async function getStaticProps(props) {
 //   const genre = context.query.genre;
-//   console.log(genre, "genreeee");
 
 //   const request = await fetch(
 //     `https://api.themoviedb.org/3${
@@ -35,7 +52,6 @@ export default function Home({ results }) {
 //     }`
 //   ).then((res) => res.json());
 
-//   console.log(request, "yaaaa");
 //   return {
 //     props: {
 //       results: request.results,
@@ -43,12 +59,12 @@ export default function Home({ results }) {
 //   };
 // }
 
-export async function getServerSideProps(context) {
-  const genre = context.query.genre;
+// export async function getServerSideProps(context) {
+//   const genre = context.query.genre;
 
-  return {
-    props: {
-      results: [],
-    },
-  };
-}
+//   return {
+//     props: {
+//       results: [],
+//     },
+//   };
+// }
