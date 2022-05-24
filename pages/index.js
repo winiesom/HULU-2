@@ -25,24 +25,8 @@ export default function Home({ results }) {
   );
 }
 
-// export async function getServerSideProps(context) {
-//   const genre = context.query.genre;
-
-//   const request = await fetch(
-//     `https://api.themoviedb.org/3${
-//       requests[genre]?.url || requests.fetchTrending.url
-//     }`
-//   ).then((res) => res.json());
-
-//   return {
-//     props: {
-//       results: request.results,
-//     },
-//   };
-// }
-
-export async function getStaticProps(context) {
-  const genre = "";
+export async function getServerSideProps(context) {
+  const genre = context.query.genre;
 
   const request = await fetch(
     `https://api.themoviedb.org/3${
@@ -56,13 +40,3 @@ export async function getStaticProps(context) {
     },
   };
 }
-
-// export async function getServerSideProps(context) {
-//   const genre = context.query.genre;
-
-//   return {
-//     props: {
-//       results: [],
-//     },
-//   };
-// }
